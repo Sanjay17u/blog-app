@@ -1,3 +1,4 @@
 # Ignore .env files
+.env
 server/.env
 /node_modules
