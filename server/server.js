@@ -23,7 +23,7 @@ app.use(morgan('dev'))
 
 // Routes
 const apiRoutes = require('./routes/apiRoutes');
-app.use('/', apiRoutes)
+app.use('/api/v1/user', apiRoutes)
 
 // Start Server
 const PORT = process.env.PORT
