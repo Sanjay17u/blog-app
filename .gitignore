@@ -3,3 +3,4 @@ server/.env
 /.pnp
 .pnp.*
 .yarn/*
+server/.env
