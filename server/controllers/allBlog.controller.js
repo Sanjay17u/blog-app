@@ -15,6 +15,7 @@ exports.getAllBlogController = async (req, res) => {
             BlogCount: blogs.length,
             success: true,
             message: "All Blogs Lists",
+            blogs,
         })
     } catch (error) {
         console.log(error)

@@ -1,5 +1,6 @@
 const express = require('express')
 const { getAllBlogController } = require('../controllers/allBlog.controller')
+const { createBlogController } = require('../controllers/create.controller')
 
 // router object
 const router = express.Router()
@@ -10,7 +11,7 @@ const router = express.Router()
 router.get('/all-blog', getAllBlogController)
 
 // POST || create blog
-// router.get('/create-blog', createBlogController)
+router.get('/create-blog', createBlogController)
 
 // PUT || update blog
 // router.put('/update-blog/:id', updateBlogController)
