@@ -23,7 +23,9 @@ app.use(morgan('dev'))
 
 // Routes
 const apiRoutes = require('./routes/apiRoutes');
+const blogRoutes = require('./routes/blogRouts')
 app.use('/api/v1/user', apiRoutes)
+app.use('/api/v1/blog', blogRoutes)
 
 // Start Server
 const PORT = process.env.PORT
