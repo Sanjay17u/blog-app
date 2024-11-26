@@ -11,7 +11,7 @@ const router = express.Router()
 router.get('/all-blog', getAllBlogController)
 
 // POST || create blog
-router.get('/create-blog', createBlogController)
+router.post('/create-blog', createBlogController)
 
 // PUT || update blog
 // router.put('/update-blog/:id', updateBlogController)

@@ -7,7 +7,7 @@ const blogSchema = new mongoose.Schema({
         require: [true, "Title is required"],
     },
     
-    discription:{
+    description:{
         type: String,
         require: [true, "Discription is required"],
     },
