@@ -4,18 +4,23 @@ const mongoose = require('mongoose')
 const blogSchema = new mongoose.Schema({
     title:{
         type: String,
-        require: [true, "Title is required"],
+        required: [true, "Title is required"],
     },
     
     description:{
         type: String,
-        require: [true, "Discription is required"],
+        required: [true, "Discription is required"],
     },
     
     image:{
         type: String,
-        require: [true, "Image is required"],
+        required: [true, "Image is required"],
     },
+    user:{
+        type:mongoose.Types.ObjectId,
+        ref:'User',
+        required: [true, "user id is required"]
+    }
     
 
 }, {timestamps: true})
