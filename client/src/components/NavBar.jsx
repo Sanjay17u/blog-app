@@ -27,15 +27,7 @@ const NavBar = () => {
               Register
             </a>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-200">
-              Menu
-            </Button>
-          </div>
-
-          {/* Logout Button (can be used conditionally) */}
+          
           <div className="ml-4">
             <Button className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition duration-300">
               Logout
