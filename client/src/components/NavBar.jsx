@@ -7,6 +7,7 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Menu } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 const NavBar = () => {
   const isLogin = useSelector(state => state.isLogin);
@@ -74,6 +75,7 @@ const MobileNavBar = () => {
           <SheetTitle className="text-sm font-bold text-white">Blog-App</SheetTitle>
           <SheetDescription className="mt-2 text-sm"></SheetDescription>
         </SheetHeader>
+        <Separator className="mt-2"/>
 
         {/* Mobile Menu Links */}
 

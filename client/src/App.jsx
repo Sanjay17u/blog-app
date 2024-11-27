@@ -10,7 +10,7 @@ import Register from "./components/Register";
 function App() {
   return (
     <>
-      <div className="bg-gray-950 min-h-screen text-white flex flex-col">
+      <div className="bg-zinc-900 min-h-screen text-white flex flex-col">
         <NavBar />
         <Routes>
           <Route
