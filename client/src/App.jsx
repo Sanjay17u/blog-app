@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import './App.css'
 import React from 'react'
+import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
-      <h1 className='text-2xl font-bold'>Hello There..!</h1>
+      <div className='bg-gray-950 min-h-screen text-white'>
+        <NavBar/>
+      </div>
     </>
   )
 }
