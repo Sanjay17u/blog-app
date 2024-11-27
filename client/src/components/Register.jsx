@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Link, useNavigate, } from "react-router-dom";
 import axios from 'axios'
+import { useToast } from '../hooks/use-toast'
+
 
 const Register = () => {
   const [loading] = useState(false);
@@ -25,6 +27,7 @@ const Register = () => {
   }
 
 
+  const { toast } = useToast()
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -33,15 +36,26 @@ const Register = () => {
             email:input.email,
             password:input.password
         })
+        console.log(data)
         if(data.success) {
-            alert('User Register Successfully')
+          toast({
+            title: "Registration Successful",
+            description: "User registered successfully. Redirecting to login...",
+          })
+            console.log("Navigation to Login...")
             navigate('/login')
         }
     } catch (error) {
         console.log(error)
+        toast({
+          title: "Error",
+          description: "Something went wrong, please try again.",
+        });
     }
     console.log(input)
   }
+
+
 
   return (
     <>

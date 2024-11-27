@@ -2,6 +2,9 @@
     "references": [
     ],
     "compilerOptions": {
+      "target": "ES6",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
       "jsx": "react",
       "baseUrl": ".",
       "paths": {

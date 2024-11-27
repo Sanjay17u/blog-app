@@ -30,7 +30,7 @@ exports.registerController = async (req, res) => {
         const user = new userModel({username,email,password:hashedPassword})
         await user.save()
         return res.status(201).send({
-            seccess: true,
+            success: true,
             message: 'New User Created',
             user
         })

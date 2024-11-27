@@ -6,12 +6,15 @@ import { Route, Routes } from "react-router-dom";
 import Blogs from "./components/Blogs";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import { Toaster } from "./components/ui/toaster";
+
 
 function App() {
   return (
     <>
       <div className="bg-zinc-900 min-h-screen text-white flex flex-col">
         <NavBar />
+        <Toaster/>
         <Routes>
           <Route
             path="/"
