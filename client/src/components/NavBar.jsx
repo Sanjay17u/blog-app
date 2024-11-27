@@ -44,12 +44,12 @@ const NavBar = () => {
         )}
 
         {isLogin && (
-          <div className="ml-4">
+          <div className="ml-4 hidden md:block">
             <Button className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition duration-300">
               Logout
             </Button>
           </div>
-         )}
+         )} 
 
         {/* Mobile NavBar (Sheet) */}
         <MobileNavBar />
