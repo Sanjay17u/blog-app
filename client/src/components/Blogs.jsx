@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
@@ -35,7 +36,7 @@ const Blogs = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 p-6">
       {blogs.map((blog, index) => (
-        <div key={index} className="group">
+        <div key={index} id={blog._id} isUser={localStorage.getItem('userId')===blog.user.id} className="group">
           <Card className="bg-white shadow-md rounded-lg overflow-hidden hover:scale-105 transition-all duration-500 ease-in-out h-full max-w-xs">
             {/* Top Image */}
             <CardHeader className="relative">

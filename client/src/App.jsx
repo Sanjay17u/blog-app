@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import { Toaster } from "./components/ui/toaster";
 import UserBlog from "./components/UserBlogs";
 import CreateBlog from "./components/CreateBlog";
+import UpdateBlog from "./components/UpdateBlog";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/my-blogs" element={<UserBlog />} />
           <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/update-blog/:id" element={<UpdateBlog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

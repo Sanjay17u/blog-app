@@ -38,7 +38,7 @@ const CreateBlog = () => {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,
-        user: userId, // Add userId to the payload
+        user: userId, 
       });
 
       if (data.success) {
@@ -61,10 +61,10 @@ const CreateBlog = () => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <h2 className="text-2xl font-semibold text-center mb-6">Create a New Blog</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 ">
         {/* Title Input */}
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="title" className="block text-sm font-medium text-white">
             Title
           </label>
           <input
@@ -80,7 +80,7 @@ const CreateBlog = () => {
 
         {/* Description Input */}
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="description" className="block text-sm font-medium text-white">
             Description
           </label>
           <textarea
@@ -96,7 +96,7 @@ const CreateBlog = () => {
 
         {/* Image URL Input */}
         <div>
-          <label htmlFor="image" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="image" className="block text-sm font-medium text-white">
             Image URL
           </label>
           <input

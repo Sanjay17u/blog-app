@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
@@ -10,11 +11,14 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const UserBlog = () => {
   const [blogs, setBlogs] = useState([]);
 
   const apiUrl = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate()
 
   // get user blogs
   const getUserBlogs = async () => {
@@ -43,6 +47,12 @@ const UserBlog = () => {
     getUserBlogs();
   }, []);
 
+
+  const handleUpdate = (id) => {
+    // Redirect to the UpdateBlog page
+    navigate(`/update-blog/${id}`);
+  };
+
   console.log(blogs);
 
   useEffect(() => {
@@ -55,7 +65,7 @@ const UserBlog = () => {
       {blogs && blogs.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 p-6">
           {blogs.map((blog, index) => (
-            <div key={index} className="group">
+            <div key={index} id={blog._id} isUser={true} className="group">
               <Card className="bg-white shadow-md rounded-lg overflow-hidden hover:scale-105 transition-all duration-500 ease-in-out h-full max-w-xs">
                 {/* Top Image */}
                 <CardHeader className="relative">
@@ -78,9 +88,12 @@ const UserBlog = () => {
                   <CardFooter className="p-0 text-center mt-auto">
                     <div className="flex justify-between space-x-4 w-full">
                       {/* Update Button */}
-                      <button className="bg-blue-500 text-white text-xs font-bold px-4 rounded-full hover:bg-blue-600 transition duration-300 transform hover:scale-105">
+                      <button 
+                      onClick={() => handleUpdate(blog._id)}
+                      className="bg-blue-500 text-white text-xs font-bold px-4 rounded-full hover:bg-blue-600 transition duration-300 transform hover:scale-105">
                         Update
                       </button>
+                      
 
                       {/* Delete Button */}
                       <button className="bg-red-500 text-white text-xs font-bold px-4 rounded-full hover:bg-red-600 transition duration-300 transform hover:scale-105">
