@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'
+import { useToast } from "../hooks/use-toast";
  
 const CreateBlog = () => {
   const [inputs, setInputs] = useState({
@@ -12,6 +13,8 @@ const CreateBlog = () => {
 
   const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate()
+  const { toast } = useToast()
+
 
   // Handle input changes
   const handleChange = (e) => {
@@ -49,9 +52,15 @@ const CreateBlog = () => {
           description: "",
           image: "",
         });
+        toast({
+          title: `Post Created Successfully`
+        })
         navigate('/blogs')
       } else {
         console.error("Error creating blog:", data.message);
+        toast({
+          title: `Error Creating Blog Post`,
+      })
       }
     } catch (error) {
       console.error("Error during API call:", error);

@@ -13,12 +13,16 @@ import {
 } from "./ui/card";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
+import { useToast } from "../hooks/use-toast";
+
+
 
 const UserBlog = () => {
   const [blogs, setBlogs] = useState([]);
 
   const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate()
+  
 
   // get user blogs
   const getUserBlogs = async () => {
@@ -45,14 +49,21 @@ const UserBlog = () => {
 
 
   // Delete blog
+  const { toast } = useToast()
   const deleteBlog = async (id) => {
     try {
       const { data } = await axios.delete(`${apiUrl}/api/v1/blog/delete-blog/${id}`);
       if (data.success) {
-        setBlogs(blogs.filter((blog) => blog._id !== id));  
+        setBlogs(blogs.filter((blog) => blog._id !== id));
+        toast({
+          title: "Post Deleted Succesfully"
+        })  
       }
     } catch (error) {
       console.error("Error deleting blog:", error);
+      toast({
+        title: `Error deleting blog`,
+    })
     }
   };
 

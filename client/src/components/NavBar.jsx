@@ -29,6 +29,7 @@ const NavBar = () => {
         title: "Logout Successfully"
       })
         navigate('/')
+        localStorage.clear()
     } catch (error) {
       console.log(error)
       toast({

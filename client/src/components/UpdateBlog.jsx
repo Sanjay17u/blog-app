@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom"; 
 import { Button } from "./ui/button";
+import { useToast } from "../hooks/use-toast";
 
 const UpdateBlog = () => {
   const [blog, setBlog] = useState({
@@ -15,6 +16,7 @@ const UpdateBlog = () => {
   const { id } = useParams(); 
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
+  const { toast } = useToast()
 
   // Fetch blog data based on the ID from URL
   const getBlogById = async () => {
@@ -25,6 +27,9 @@ const UpdateBlog = () => {
         setBlog(data.blogs); 
       } else {
         console.error("Error: Blog not found");
+        toast({
+            title: `Error Blog not found`,
+        })
       }
     } catch (error) {
       console.log("Error fetching blog:", error);
@@ -51,6 +56,9 @@ const UpdateBlog = () => {
     try {
       const { data } = await axios.put(`${apiUrl}/api/v1/blog/update-blog/${id}`, blog);
       if (data.success) {
+        toast({
+            title: `Post Updated Successfully`,
+        })
         navigate(`/my-blogs`); 
       }
     } catch (error) {
