@@ -33,7 +33,7 @@ const Blogs = () => {
 
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 p-6">
       {blogs.map((blog, index) => (
         <div key={index} className="group">
           <Card className="bg-white shadow-md rounded-lg overflow-hidden hover:scale-105 transition-all duration-500 ease-in-out h-full max-w-xs">

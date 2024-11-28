@@ -39,6 +39,7 @@ const Login = () => {
         })
         console.log(data)
         if(data.success) {
+          localStorage.setItem('userId',data?.user._id);
           dispatch(authAction.login())
           toast({
             title: `Welcome Back ${data.user.username}`,

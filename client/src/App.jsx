@@ -7,6 +7,7 @@ import Blogs from "./components/Blogs";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import { Toaster } from "./components/ui/toaster";
+import UserBlog from "./components/UserBlogs";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             }
           />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/my-blogs" element={<UserBlog />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
