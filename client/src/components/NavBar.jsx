@@ -51,6 +51,9 @@ const NavBar = () => {
               <Link to="/my-blogs" className="text-white hover:text-blue-400 transition-all duration-300 text-base font-medium">
                 My Blogs
               </Link>
+              <Link to="/create-blog" className="text-white hover:text-blue-400 transition-all duration-300 text-base font-medium">
+                Create
+              </Link>
             </div>
           )}
         </div>
@@ -85,6 +88,7 @@ const NavBar = () => {
 export default NavBar;
 
 const MobileNavBar = ({ handleLogout }) => {
+  const isLogin = useSelector(state => state.isLogin); // Get login state
 
   return (
     <Sheet>
@@ -102,17 +106,16 @@ const MobileNavBar = ({ handleLogout }) => {
         <Separator className="mt-2"/>
 
         {/* Mobile Menu Links */}
-
         <div className="space-y-4 py-4">
-        {useSelector(state => state.isLogin) && (
-          <>
-          <Link to="/blogs" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Blogs</Link>
-          <Link to="/my-blogs" className="block text-lg font-medium hover:text-blue-400 transition duration-300">My Blogs</Link>
-          </>
-        )}
+          {isLogin && (
+            <>
+              <Link to="/blogs" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Blogs</Link>
+              <Link to="/my-blogs" className="block text-lg font-medium hover:text-blue-400 transition duration-300">My Blogs</Link>
+              <Link to="/create-blog" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Create</Link>  
+            </>
+          )}
 
-
-          {!useSelector(state => state.isLogin) ? (
+          {!isLogin ? (
             <>
               <Link to="/login" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Login</Link>
               <Link to="/register" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Register</Link>
