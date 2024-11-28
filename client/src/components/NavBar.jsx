@@ -12,7 +12,8 @@ import { useToast } from "../hooks/use-toast";
 
 
 const NavBar = () => {
-  const isLogin = useSelector(state => state.isLogin);
+  let isLogin = useSelector(state => state.isLogin);
+  isLogin = isLogin || localStorage.getItem('userId')
   console.log(isLogin);
   const dispatch = useDispatch()
   const { toast } = useToast()
@@ -88,7 +89,8 @@ const NavBar = () => {
 export default NavBar;
 
 const MobileNavBar = ({ handleLogout }) => {
-  const isLogin = useSelector(state => state.isLogin); // Get login state
+  let isLogin = useSelector(state => state.isLogin); // Get login state
+  isLogin = isLogin || localStorage.getItem('userId')
 
   return (
     <Sheet>
