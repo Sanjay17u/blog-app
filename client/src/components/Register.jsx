@@ -10,7 +10,7 @@ import { useToast } from '../hooks/use-toast'
 
 
 const Register = () => {
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [input, setInput] = useState({
     username: "",
     email: "",
@@ -30,6 +30,7 @@ const Register = () => {
   const { toast } = useToast()
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try {
         const {data} = await axios.post(`${apiUrl}/api/v1/user/register`, {
             username:input.username,
@@ -39,8 +40,7 @@ const Register = () => {
         console.log(data)
         if(data.success) {
           toast({
-            title: "Registration Successful",
-            description: "User registered successfully. Redirecting to login...",
+            title: `Registration Successful ${data.user.username}`,
           })
             console.log("Navigation to Login...")
             navigate('/login')
@@ -51,6 +51,8 @@ const Register = () => {
           title: "Error",
           description: "Something went wrong, please try again.",
         });
+    } finally {
+      setLoading(false)
     }
     console.log(input)
   }
