@@ -1,17 +1,40 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
 import { Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { authAction } from "../redux/store";
+import { useToast } from "../hooks/use-toast";
+
 
 const NavBar = () => {
   const isLogin = useSelector(state => state.isLogin);
   console.log(isLogin);
+  const dispatch = useDispatch()
+  const { toast } = useToast()
+  const navigate = useNavigate();
+
+
+
+
+  const handleLogout = () => {
+    try {
+      dispatch(authAction.logout())
+      toast({
+        title: "Logout Successfully"
+      })
+        navigate('/')
+    } catch (error) {
+      console.log(error)
+      toast({
+        title: "Error While Logout"
+      })
+    }
+  }
 
   return (
     <nav className="bg-zinc-900 p-4">
@@ -46,14 +69,14 @@ const NavBar = () => {
 
         {isLogin && (
           <div className="ml-4 hidden md:block">
-            <Button className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition duration-300">
+            <Button onClick={handleLogout} className="bg-gray-800 text-white px-5 py-2 rounded-md hover:bg-gray-700 transition duration-300">
               Logout
             </Button>
           </div>
          )} 
 
         {/* Mobile NavBar (Sheet) */}
-        <MobileNavBar />
+        <MobileNavBar handleLogout={handleLogout} />
       </div>
     </nav>
   );
@@ -61,7 +84,8 @@ const NavBar = () => {
 
 export default NavBar;
 
-const MobileNavBar = () => {
+const MobileNavBar = ({ handleLogout }) => {
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -94,7 +118,7 @@ const MobileNavBar = () => {
               <Link to="/register" className="block text-lg font-medium hover:text-blue-400 transition duration-300">Register</Link>
             </>
           ) : (
-            <Button className="block w-full bg-gray-700 text-white px-5 py-2 rounded-md hover:bg-gray-800 transition duration-300">
+            <Button onClick={handleLogout} className="block w-full bg-gray-700 text-white px-5 py-2 rounded-md hover:bg-gray-800 transition duration-300">
               Logout
             </Button>
           )}

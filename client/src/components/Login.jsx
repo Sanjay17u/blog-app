@@ -7,6 +7,8 @@ import { Separator } from "./ui/separator";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "../hooks/use-toast";
 import axios from "axios";
+import { useDispatch } from 'react-redux'
+import { authAction } from '../redux/store'
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -15,6 +17,7 @@ const Login = () => {
     password: ""
   })
 
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const apiUrl = import.meta.env.VITE_API_URL;
   const { toast } = useToast()
@@ -36,6 +39,7 @@ const Login = () => {
         })
         console.log(data)
         if(data.success) {
+          dispatch(authAction.login())
           toast({
             title: `Welcome Back ${data.user.username}`,
           })
