@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "./ui/card";
@@ -51,8 +52,7 @@ const UserBlog = () => {
 
   return (
     <>
-        
-        {blogs && blogs.length > 0 ? (
+      {blogs && blogs.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 p-6">
           {blogs.map((blog, index) => (
             <div key={index} className="group">
@@ -67,7 +67,7 @@ const UserBlog = () => {
                 </CardHeader>
 
                 {/* Title */}
-                <CardContent className="p-4 flex flex-col justify-between h-full">
+                <CardContent className="p-4 flex flex-col justify-between ">
                   <CardTitle className="text-xl font-semibold text-gray-800 mb-2">
                     {blog.title}
                   </CardTitle>
@@ -75,6 +75,19 @@ const UserBlog = () => {
                   <CardDescription className="text-gray-600 text-sm mb-4 flex-grow">
                     {blog.description}
                   </CardDescription>
+                  <CardFooter className="p-0 text-center mt-auto">
+                    <div className="flex justify-between space-x-4 w-full">
+                      {/* Update Button */}
+                      <button className="bg-blue-500 text-white text-xs font-bold px-4 rounded-full hover:bg-blue-600 transition duration-300 transform hover:scale-105">
+                        Update
+                      </button>
+
+                      {/* Delete Button */}
+                      <button className="bg-red-500 text-white text-xs font-bold px-4 rounded-full hover:bg-red-600 transition duration-300 transform hover:scale-105">
+                        Delete
+                      </button>
+                    </div>
+                  </CardFooter>
                 </CardContent>
               </Card>
             </div>
@@ -83,7 +96,6 @@ const UserBlog = () => {
       ) : (
         <h1>You don&apos;t have any blogs yet</h1>
       )}
-
     </>
   );
 };
