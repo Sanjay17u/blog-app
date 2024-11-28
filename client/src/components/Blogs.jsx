@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {
@@ -8,33 +9,28 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Button } from './ui/button'
+import axios from 'axios'
+import { Button } from "./ui/button";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      const blogData = [
-        {
-          title: "Hare Krishna",
-          description:
-            "Lord Krishna, please engage me in Your devotional service.",
-          image: "https://cdn.pixabay.com/photo/2024/04/28/09/43/ai-generated-8725194_640.jpg",
-          user: "User1",
-        },
-        {
-          title: "Ram Navmi",
-          description:
-            "Lord Ram bow arrow and temple background for Indian festival Ram Navmi.",
-          image: "https://t3.ftcdn.net/jpg/05/84/58/80/240_F_584588037_H0FjO1I9MzQ5kuGufuljKVQvdWEJWhE7.jpg",
-          user: "User2",
-        },
-      ];
-      setBlogs(blogData);
-    };
-    fetchBlogs();
-  }, []);
+    const getAllBlogs = async () => {
+        try {
+            const {data} = await axios.get(`${apiUrl}/api/v1/blog/all-blog`)
+            if(data && data.success){
+                setBlogs(data?.blogs)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+ 
+    useEffect(() => {
+        getAllBlogs()
+    },[])
+
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-6">
@@ -59,6 +55,9 @@ const Blogs = () => {
               <CardDescription className="text-gray-600 text-sm mb-4 flex-grow">
                 {blog.description}
               </CardDescription>
+              {/* <CardFooter className="p-0 text-center mt-auto">
+                <Button className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 transition duration-300 transform hover:scale-105">Create More</Button>
+              </CardFooter> */}
             </CardContent>
           </Card>
         </div>

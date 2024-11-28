@@ -3,6 +3,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 const dotenv = require('dotenv')
 const connectDB = require('./config/connectDB');
+const cookieParser = require('cookie-parser');
+
 
 
 // env config
@@ -22,11 +24,12 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 app.use(morgan('dev'))
 
 // Routes
 const apiRoutes = require('./routes/apiRoutes');
-const blogRoutes = require('./routes/blogRouts')
+const blogRoutes = require('./routes/blogRouts');
 app.use('/api/v1/user', apiRoutes)
 app.use('/api/v1/blog', blogRoutes)
 
