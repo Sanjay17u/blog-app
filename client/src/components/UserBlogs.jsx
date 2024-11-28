@@ -43,6 +43,21 @@ const UserBlog = () => {
     }
   };
 
+
+  // Delete blog
+  const deleteBlog = async (id) => {
+    try {
+      const { data } = await axios.delete(`${apiUrl}/api/v1/blog/delete-blog/${id}`);
+      if (data.success) {
+        setBlogs(blogs.filter((blog) => blog._id !== id));  
+      }
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+    }
+  };
+
+
+
   useEffect(() => {
     getUserBlogs();
   }, []);
@@ -96,7 +111,9 @@ const UserBlog = () => {
                       
 
                       {/* Delete Button */}
-                      <button className="bg-red-500 text-white text-xs font-bold px-4 rounded-full hover:bg-red-600 transition duration-300 transform hover:scale-105">
+                      <button 
+                      onClick={() => deleteBlog(blog._id)}
+                      className="bg-red-500 text-white text-xs font-bold px-4 rounded-full hover:bg-red-600 transition duration-300 transform hover:scale-105">
                         Delete
                       </button>
                     </div>
