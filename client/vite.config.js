@@ -6,6 +6,11 @@ import path from "path"
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  css: {
+    postcss: {
+      plugins: [require('tailwindcss'), require('autoprefixer')],
+    },
+  },
   resolve: {
     alias: {
       '@shadcn/ui': path.resolve(__dirname, 'node_modules/@shadcn/ui'),
