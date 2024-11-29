@@ -8,21 +8,18 @@
         "distDir": "dist"
       }
     },
+
     {
       "src": "server/*",
       "use": "@vercel/node"
     }
   ],
+  
   "routes": [
     
     {
       "src": "/(.*)",
       "dest": "/client/$1"
-    },
-    
-    {
-      "src": "/api/(.*)",
-      "dest": "/server/api/$1"
     },
     
     {
