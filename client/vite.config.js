@@ -8,7 +8,10 @@ export default defineConfig({
   plugins: [react()],
   css: {
     postcss: {
-      plugins: [require('tailwindcss'), require('autoprefixer')],
+      plugins: [
+        require('tailwindcss'), 
+        require('autoprefixer')
+      ],
     },
   },
   resolve: {
