@@ -14,7 +14,7 @@
       "use": "@vercel/node"
     }
   ],
-  
+
   "routes": [
     
     {
@@ -23,8 +23,8 @@
     },
     
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
