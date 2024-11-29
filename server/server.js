@@ -35,7 +35,7 @@ const blogRoutes = require('./routes/blogRouts');
 app.use('/api/v1/user', apiRoutes)
 app.use('/api/v1/blog', blogRoutes)
 
-app.use(express.static(path.join(DIRNAME, "client", "dist")));
+app.use(express.static(path.join(DIRNAME, "..", "client", "dist")));
 app.use("*",(_,res) => {
     res.sendFile(path.resolve(DIRNAME, "client","dist","index.html"));
 })
