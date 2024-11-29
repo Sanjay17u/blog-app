@@ -1,0 +1,16 @@
+# Ignore .env files
+.env
+**/.env
+server/.env
+
+
+# Node modules
+node_modules/
+
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store  # For MacOS
+Thumbs.db  # For Windows
