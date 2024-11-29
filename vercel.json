@@ -21,6 +21,11 @@
     },
     
     {
+      "src": "/api/(.*)",
+      "dest": "/server/api/$1"
+    },
+    
+    {
       "source": "/api/(.*)",
       "destination": "/server/api/$1"
     }
